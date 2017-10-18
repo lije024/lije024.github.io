@@ -284,7 +284,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lije024.github.io/2017/10/17/我的博客/">
+    <link itemprop="mainEntityOfPage" href="http://lije024.github.io/2016/04/20/ios深浅拷贝/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="骁驰">
@@ -303,7 +303,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/17/我的博客/" itemprop="url">我的博客</a></h1>
+                <a class="post-title-link" href="/2016/04/20/ios深浅拷贝/" itemprop="url">ios深浅拷贝</a></h1>
         
 
         <div class="post-meta">
@@ -315,8 +315,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-17T18:26:53+08:00">
-                2017-10-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-04-20T12:02:02+08:00">
+                2016-04-20
               </time>
             
 
@@ -355,7 +355,19 @@
       
         
           
-            
+            <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>在对于自定义的对象支持copy功能，也就是我们要给自定义的对象发送copy message,那我们就要手动实现NSCopying协议。在项目开发中我们如果对某个字典或者数组对象进行了一次mutbleCopy其实系统默认的调用了如下API:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (id)<span class="symbol">mutableCopyWithZone:</span>(nullable NSZone *)zone;</div></pre></td></tr></table></figure>
+<h1 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h1><p>如果你现在通过retain或者alloc创建并持有了一个对象，浅拷贝就是重新拷贝了一个指向当前这个对象的指针，此时就有两份指针同时指向当前对象的内存区域，即指向同一块内存区域，对象只有一份并没有发生任何变化。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSString *hdfString = @<span class="string">"haodf.com"</span>;</div><div class="line">NSString *str = hdfString;</div><div class="line">NSString *str2 = [str copy];</div></pre></td></tr></table></figure>
+<h1 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h1><p>深拷贝拷贝当前指针指向的对象，系统会随机给拷贝的对象重新分配一块内存，深拷贝以后，两份对象的内存地址不一样，指针指向也不一样。深拷贝会把当前容器中的对象重新拷贝一份放到另一个容器中，拷贝后的指针指向新的容器。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSString *hdfString = @<span class="string">"haodf.com"</span>;</div><div class="line">NSString *str = [hdfString copy];</div><div class="line">NSString *str2 = [str mutableCopy];</div></pre></td></tr></table></figure>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p> 1、对不可变的对象进行mutableCopy操作,是进行了一次深拷贝，返回的对象是可变的对象。</p>
+<p> 2、对不可变的对象进行copy操作，进行了一次浅拷贝，返回一个不可变的对象。</p>
+<p> 3、对可变得对象进行copy，进行了深拷贝，返回的是可变的对象。</p>
+<p> 4、 对可变的对象进行了一次mutableCopy，是进行了一次深拷贝， 返回的对象是一个可变的对象。</p>
+<p> 5、想要让自定义的对象支持copy和mutableCopy那么就要对应实现NSCopying协议，和NSMutableCopying协议。</p>
+<h1 id="retain和copy的区别："><a href="#retain和copy的区别：" class="headerlink" title="retain和copy的区别："></a>retain和copy的区别：</h1><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>、retain是对当前对象增加了一个指针指向，使对象的引用计数器加<span class="number">1</span>， 是进行了一次安全的浅拷贝操作。</div><div class="line"><span class="number">2</span>、copy是对当前对象进行了一次拷贝，重新拷贝了当前对象，当使用的时候减少了对当前对象的依赖。</div></pre></td></tr></table></figure>
+
           
         
       
@@ -403,7 +415,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lije024.github.io/2017/10/16/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://lije024.github.io/2016/03/14/图片的压缩方式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="骁驰">
@@ -422,7 +434,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/16/hello-world/" itemprop="url">Hello World</a></h1>
+                <a class="post-title-link" href="/2016/03/14/图片的压缩方式/" itemprop="url">图片的压缩方式</a></h1>
         
 
         <div class="post-meta">
@@ -434,8 +446,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-16T18:41:19+08:00">
-                2017-10-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-14T16:23:27+08:00">
+                2016-03-14
               </time>
             
 
@@ -474,15 +486,540 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+            <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>在我们项目开发中我们经常会遇到关于图片的处理。</p>
+<p>在图片上传中我们会从用户体验方面考虑用户的流量是否能够很好的支持上传的图片，我们会对图片先压缩后上传。</p>
+<p>当我们考虑到手机的本身内存我们会对下载的图片进行压缩，以便节省手机内存成本。</p>
+<h1 id="读取图片的方式"><a href="#读取图片的方式" class="headerlink" title="读取图片的方式"></a>读取图片的方式</h1><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>、UIImageJPEGRepresentation()此API需要两个参数，一个是图片对象，一个是压缩系数，但是图片的质量会有所下降，但是体积不会变。</div><div class="line"><span class="number">2</span>、UIImagePNGRepresentation()，只需要一个图片的对象参数，不会对图片压缩，原图展示。</div></pre></td></tr></table></figure>
+<h1 id="对图片的质量进行压缩"><a href="#对图片的质量进行压缩" class="headerlink" title="对图片的质量进行压缩"></a>对图片的质量进行压缩</h1><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>、UIImageJPEGRepresentation()返回的数据量要比UIImagePNGRepresentation()大很多，前者返回的数据量要比后者小很多，前者返回的数据量大概是<span class="number">115</span>kb，后者返回的数据大概为<span class="number">190</span>kb，相差很大。</div><div class="line"><span class="number">2</span>、如果对UIImageJPEGRepresentation()的系数设置为<span class="number">0</span>.<span class="number">5</span>，再加上本身不是很追求图片的质量，那么会大大节省图片的资源大小，大概为<span class="number">11</span>kb。</div><div class="line"></div><div class="line">+ (UIImage *)<span class="symbol">resuceImage:</span>(UIImage *)hdfImage <span class="symbol">percent:</span>(CGFloat)percent &#123;</div><div class="line">  UIImage *image = <span class="literal">nil</span>;</div><div class="line">  NSData *data = <span class="literal">nil</span>;</div><div class="line">  </div><div class="line">  <span class="keyword">if</span>(hdfImage) &#123;</div><div class="line">   data = UIImageJPEGRepresentation(hdfImage, percent);</div><div class="line">   image = [UIImage <span class="symbol">imageWithData:</span>data];</div><div class="line">  &#125; </div><div class="line">  </div><div class="line">  <span class="keyword">return</span> image;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="压缩图片到指定的尺寸"><a href="#压缩图片到指定的尺寸" class="headerlink" title="压缩图片到指定的尺寸"></a>压缩图片到指定的尺寸</h1><p>我们传入理想的图片尺寸即可。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">+ (UIImage *)<span class="symbol">reduceImage:</span>(UIImge *)hdfImage <span class="symbol">reduceSize:</span>(CGSize)reduceSize &#123;</div><div class="line">  UIGraphicsBeginImageContext(reduceSize);</div><div class="line">  </div><div class="line">  UIIMage *image = <span class="literal">nil</span>;</div><div class="line">  <span class="keyword">if</span>(hdfImage) &#123;</div><div class="line">    [image <span class="symbol">drawInRect:</span>CGRectMake(<span class="number">0</span>, <span class="number">0</span>, reduceSize.width, reducdeSize.height)];</div><div class="line">    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();</div><div class="line">    UIGraphicsEndImageContext();</div><div class="line">  &#125;</div><div class="line">   <span class="keyword">return</span> image;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="等比例压缩图片"><a href="#等比例压缩图片" class="headerlink" title="等比例压缩图片"></a>等比例压缩图片</h1><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">-(UIImage *) <span class="symbol">imageCompressForWidth:</span>(UIImage *)sourceImage <span class="symbol">targetWidth:</span>(CGFloat)defineWidth &#123;</div><div class="line">    UIImage *newImage = <span class="literal">nil</span>;</div><div class="line">    CGSize imageSize = sourceImage.size;</div><div class="line">    CGFloat width = imageSize.width;</div><div class="line">    CGFloat height = imageSize.height;</div><div class="line">    CGFloat targetWidth = defineWidth;</div><div class="line">    CGFloat targetHeight = height / (width / targetWidth);</div><div class="line">    CGSize size = CGSizeMake(targetWidth, targetHeight);</div><div class="line">    CGFloat scaleFactor = <span class="number">0</span>.<span class="number">0</span>;</div><div class="line">    CGFloat scaledWidth = targetWidth;</div><div class="line">    CGFloat scaledHeight = targetHeight;</div><div class="line">    CGPoint thumbnailPoint = CGPointMake(<span class="number">0</span>.<span class="number">0</span>, <span class="number">0</span>.<span class="number">0</span>);</div><div class="line">    <span class="keyword">if</span>(CGSizeEqualToSize(imageSize, size) == NO)&#123;</div><div class="line">        CGFloat widthFactor = targetWidth / width;</div><div class="line">        CGFloat heightFactor = targetHeight / height;</div><div class="line">    <span class="keyword">if</span>(widthFactor &gt; heightFactor)&#123;</div><div class="line">        scaleFactor = widthFactor;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">        scaleFactor = heightFactor;</div><div class="line">    &#125;</div><div class="line">    scaledWidth = width * scaleFactor;</div><div class="line">    scaledHeight = height * scaleFactor;</div><div class="line">    <span class="keyword">if</span>(widthFactor &gt; heightFactor)&#123;</div><div class="line">        thumbnailPoint.y = (targetHeight - scaledHeight) * <span class="number">0</span>.<span class="number">5</span>;</div><div class="line">     &#125;<span class="keyword">else</span> <span class="keyword">if</span>(widthFactor &lt; heightFactor)&#123;</div><div class="line">        thumbnailPoint.x = (targetWidth - scaledWidth) * <span class="number">0</span>.<span class="number">5</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    UIGraphicsBeginImageContext(size);</div><div class="line">    CGRect thumbnailRect = CGRectZero;</div><div class="line">    thumbnailRect.origin = thumbnailPoint;</div><div class="line">    thumbnailRect.size.width = scaledWidth;</div><div class="line">    thumbnailRect.size.height = scaledHeight;</div><div class="line"></div><div class="line">    [sourceImage <span class="symbol">drawInRect:</span>thumbnailRect];</div><div class="line"></div><div class="line">    newImage = UIGraphicsGetImageFromCurrentImageContext();</div><div class="line">    <span class="keyword">if</span>(newImage == <span class="literal">nil</span>)&#123;</div><div class="line">       NSLog(@<span class="string">"scale image fail"</span>);</div><div class="line">    &#125;</div><div class="line">    UIGraphicsEndImageContext();</div><div class="line">    <span class="keyword">return</span> newImage;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lije024.github.io/2016/02/24/iOS解决滑动页面卡顿的基本技巧/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="骁驰">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/lije.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="骁驰的杂货店">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/02/24/iOS解决滑动页面卡顿的基本技巧/" itemprop="url">iOS解决滑动页面卡顿的基本技巧</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-24T16:04:00+08:00">
+                2016-02-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>在开发中我们常常会遇到布局比较复杂的cell,在滑动的时候会导致界面不流畅，出现卡顿的现象，这是由于CPU计算和GPU渲染，之间未及时交换数据丢失帧导致的结果。</p>
+<h1 id="imageView尽量设置为不透明"><a href="#imageView尽量设置为不透明" class="headerlink" title="imageView尽量设置为不透明"></a>imageView尽量设置为不透明</h1><ul>
+<li>opque尽量设置为YES</li>
+</ul>
+<p>当imageView的opque设置为YES的时候其alpha的属性就会无效，imageView的半透明取决于其图片半透明或者imageView本身的背景色合成的图层view是半透明的。</p>
+<p>如果图片全部不是半透明就不会触发图层的blend操作，整个图层就会不透明。</p>
+<p>如果叠加的图片有出现半透明的，就会立马触发图层的blend操作，整个图层不透明。</p>
+<ul>
+<li>opque设为NO</li>
+</ul>
+<p>当opque为NO的时候，图层的半透明取决于图片和其本身合成的图层为结果。</p>
+<ul>
+<li>背景色尽可能设为alpha值为1</li>
+</ul>
+<p>当某一块图层的alpha和其superView的背景色alpha不一样的时候会触发alpha合成操作，这是一项看似很简单但却是非常消耗CPU性能的操作。至于<code>alpha叠加</code>的概念如果有问题可以查看官方说法。</p>
+<h1 id="UIView的背景色设置"><a href="#UIView的背景色设置" class="headerlink" title="UIView的背景色设置"></a>UIView的背景色设置</h1><ul>
+<li><p>UIView的背景色尽量不要设置为clearColor，这样也会触发alpha叠加，在tableView滑动的时候是非常消耗性能的。子视图的背景色尽可能设置成其superView的背景色，这样图层合成的时候不会触发blend操作。</p>
+</li>
+<li><p>最好不使用带alpha通道的图片，如果有alpha尽量让美工取消alpha通道。</p>
+<p>alpha通道的概念特地请教了下公司UI MM,是透明的意思。</p>
+</li>
+</ul>
+<h1 id="cell上layer尽量避免使用圆角"><a href="#cell上layer尽量避免使用圆角" class="headerlink" title="cell上layer尽量避免使用圆角"></a>cell上layer尽量避免使用圆角</h1><ul>
+<li><p>在工作中关于滑动界面我们会时常遇到cell行设置头像为圆角等需求，这时候我们尽量避免使用<code>layder.cornerRadius</code>，因为这会触发离屏渲染。离屏渲染很耗时间。</p>
+<p>离屏渲染：是GPU渲染区的一个渲染缓冲区，我们所用的所有显示屏的图形图像都是通过GPU进行渲染，然后显示在屏幕上。GPU负责渲染会把渲染的图形放到缓冲区然后CPU就会发一个垂直信号显示到屏幕。</p>
+</li>
+<li><p>如果要使用圆角，我们可以设置为<code>layer.shouldRasterize = YES</code>，其实这个设置是触发光栅化，可以大大提高渲染的性能。我的理解光栅化就是类似于cell的重用机制。</p>
+<p>光栅化：把第一次渲染好的图层放到缓冲区，那么下次不需要再离屏渲染直接就可以从缓冲区拿去使用。</p>
+</li>
+</ul>
+<h1 id="优化图片的加载方式"><a href="#优化图片的加载方式" class="headerlink" title="优化图片的加载方式"></a>优化图片的加载方式</h1><p> 我们都知道图片的加载方式有两种形式：</p>
+ <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>、UIImage *headerImage = [UIImage <span class="symbol">imageNamed:</span>@<span class="string">"haodf.png"</span>；</div><div class="line"><span class="number">2</span>、UIImage * headerImage = [UIImage <span class="symbol">imageWithContentOfFile:</span>@<span class="string">"haodf.png"</span>];</div></pre></td></tr></table></figure>
+<p>我们讲讲两种加载图片方式的区别：</p>
+<ul>
+<li><p>第一种：当我们经常需要这张图片并且仅仅是小图的时候，我们可以使用此种方式加载图片。</p>
+<p>这种方式是把图片缓存在图片缓存区，当我们使用的时候会通过图片的名字也就是通过key的方式去查找图片在缓存区的内存地址。</p>
+<p>当我们使用很多图片的时候系统就会开辟很多内存来存储图片，所以qq、微信我们很多时候都会去清除缓存操作。</p>
+</li>
+<li><p>第二种：当我们使用工程里面的一张大图并且使用次数很少甚至为1次的时候，我们优先会采用这种方式加载图片，这种方式当使用完图片的时候会立即丢弃释放资源，所以对性能不会带来负担。</p>
+</li>
+</ul>
+<h1 id="尽量延迟图片的加载"><a href="#尽量延迟图片的加载" class="headerlink" title="尽量延迟图片的加载"></a>尽量延迟图片的加载</h1><ul>
+<li><p>当我们在滑动页面的时候尤其对于那种布局特别复杂的cell，滑动的时候不要加载图片，当滑动挺值得时候再进行图片的加载。</p>
+<p>我们都知道不管是UITableView还是ScrollView在滚动的时候需要显示东西都是通过runLoop去拿。</p>
+<p>当滚动的时候runLoop会处于NSRunLoopTrackingMode的模式，我们可以通过一个主线程队列dispatch_after或者selfPerformSelector设置runLoop的模式为NSDefaultRunLoopMode模式，就可以做到停止滚动再加载图片。</p>
+<p><code>注：其实严格意义上selfPerformSelector的事件就是在主线程队列中等待。</code></p>
+</li>
+<li><p>优先加载理念</p>
+<p>一直很好奇<code>墨迹天气</code>这款app基本都是很炫的图片，是如何做到滑动时候不卡顿的呢，在cocoachina上有幸认识了一位墨迹天气的大牛，说是采用优先加载的理念，既先展示一部分，当滑动的时候再加载下面的一部分这样就保持流畅。至于具体没透露。</p>
+</li>
+</ul>
+<h1 id="最重要的一点就是避免阻塞主线程"><a href="#最重要的一点就是避免阻塞主线程" class="headerlink" title="最重要的一点就是避免阻塞主线程"></a>最重要的一点就是避免阻塞主线程</h1><ul>
+<li>让图片的绘制、图片的下载、对象的创建、文本的渲染等这些耗时的操作尽可能采用子线程异步的方式去处理，对于layer及UI的操作不得不在主线程里面，只能想办法优化，所以此处给大家推荐Facebook的得力之作ASDK，有兴趣的可以好好研究下，现在好多公司都进行采用。</li>
+</ul>
+<h1 id="争议最多的xib、storyBoard、纯代码的问题"><a href="#争议最多的xib、storyBoard、纯代码的问题" class="headerlink" title="争议最多的xib、storyBoard、纯代码的问题"></a>争议最多的xib、storyBoard、纯代码的问题</h1><ul>
+<li><p>苹果推出storyboard确实为开发者节省了大量的时间，提高了开发效率，但是对于那种<br>复杂的滑动界面，利用storyboard是非常消耗资源的，不信的可以试试用性能工具timeProfie看看cpu所占的性能百分比，其CPU的资源远远大于纯代码布局，我看了一个国外的网站介绍，这两种方式初始化对象分配内存的先后方式完全不一样，至于具体细节有兴趣的可以找相关资料研究。</p>
+</li>
+<li><p>当然对于那种重用性不强固定不怎么变化的界面还是很喜欢storyboard，一蹴而就，节省成本。</p>
+</li>
+</ul>
+<h1 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h1><ul>
+<li><p>以上都是在项目中遇到这些现象的思考和想法，如果有不对的地方，请加以纠正，谢谢！</p>
+</li>
+<li><p>author: lije</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lije024.github.io/2016/02/22/ios-Monkey性能测试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="骁驰">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/lije.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="骁驰的杂货店">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/02/22/ios-Monkey性能测试/" itemprop="url">ios Monkey性能测试</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-22T11:55:01+08:00">
+                2016-02-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>为了减轻测试人员的测试任务，<code>monkey</code>测试是利用测试工具执行相应的测试脚本，实现对程序的执行过程、操作流程进行录制</p>
+<hr>
+<h1 id="利用foneMonkey测试工具包"><a href="#利用foneMonkey测试工具包" class="headerlink" title="利用foneMonkey测试工具包"></a>利用foneMonkey测试工具包</h1><ul>
+<li>下载foneMonkey测试工具包，一般都是.zip的需要解压</li>
+<li><p>xcode打开工程，添加一个target<br><img src="/Users/lije-Mac/Desktop/898456-5422f36bdb08659f.jpeg" alt="MacDown logo"></p>
+</li>
+<li><p>重命名</p>
+</li>
+</ul>
+<p><img src="/Users/lije-Mac/Desktop/898456-7ec9d2baab49aaf7.png" alt="MacDown logo"></p>
+<ul>
+<li><p>选取刚才创建的target并将解压好的FontMonkey倒入工程目录<br><img src="/Users/lije-Mac/Desktop/898456-6d835a83248a1d63.png" alt="MacDown logo"></p>
+</li>
+<li><p>导完工程目录后还需要我们手动添加几个系统框架文件<br>libxml2.dylib、SenTestingKit.framework、QuartzCore.framework</p>
+</li>
+<li><p>修改工程的配置文件 Buile Seting－&gt;Linking-&gt;Other Linker Flags, 改成-all_load</p>
+</li>
+</ul>
+<p><img src="/Users/lije-Mac/Desktop/898456-205f331f5824278e.jpeg" alt="MacDown logo"></p>
+<ul>
+<li><p>选择真机或者模拟器，最好是真机，然后开始编译程序</p>
+</li>
+<li><p>在屏幕下方会出现好几个按钮，点击第二个开始录制程序，完成之后点击保存即可</p>
+</li>
+</ul>
+<p>利用苹果自带的<code>Automation</code>工具，这种方法只适合已经有现成测试脚本或者能够独立写js脚本的开发者，如果没有测试脚本，可以直接使用第一种方法使用现有的测试工具包含测试脚本。</p>
+<hr>
+<ul>
+<li><p>打开xcode的profile,点击instruments里面的<code>Automation</code>，此处就不给截图了，对各位大牛来说这都属于多余</p>
+</li>
+<li><p>如果我们有<code>js</code>脚本点击<code>Automation</code>右下角处有create和add选项，可以直接导入脚本，或者可以复制到代码编译框中</p>
+</li>
+</ul>
+<p><img src="/Users/lije-Mac/Desktop/898456-8c594e47f622e62e.png" alt="MacDown logo"></p>
+<ul>
+<li><p>选择你要进行测试的app</p>
+</li>
+<li><p>当有脚本之后，在<code>Automation</code>左上角有个record，点击开始执行脚本，<br>此处与方法一不同的是：这里不是录制过程，是脚本代码在代替测试人员手动点击，所触发的事件</p>
+</li>
+</ul>
+<p><img src="/Users/lije-Mac/Desktop/898456-48794bf9b9a5ed2d.png" alt="MacDown logo"></p>
+<hr>
+<ul>
+<li>备注</li>
+</ul>
+<p>我们在工程编译的过程中可能会遇到编译无法通过的报错bug,如下图：</p>
+<p><img src="/Users/lije-Mac/Desktop/898456-5fa4277575ea2833.jpg" alt="MacDown logo"></p>
+<p>出现这个我们只要把-all_load的中文格式改成英文即可，如有别的问题继续探讨</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lije024.github.io/2016/02/19/Cocoapods在项目中的使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="骁驰">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/lije.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="骁驰的杂货店">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/02/19/Cocoapods在项目中的使用/" itemprop="url">Cocoapods在项目中的使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-19T14:57:58+08:00">
+                2016-02-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>Cocoapods是在Mac OSX和iOS应用程序上利用ruby的依赖管理gem来构建的的一款第三库依赖的管理工具，通过它可以很方便的去管理项目中的三方库，随着版本的迭代可以快速升级第三方库版版本，也能够搜索出比较有价值的三方库，同时还为开发者自动配置好编译器的各种设置选项，为开发者节省大量没有技术含量去设置build phasese和link flags.</p>
+<h1 id="Cocoapods的核心组件"><a href="#Cocoapods的核心组件" class="headerlink" title="Cocoapods的核心组件"></a>Cocoapods的核心组件</h1><ol>
+<li><p>Cocoapods/Cocoapod</p>
+<p>该组件包含了Cocoapods的基本功能，每当使用pod命令时都能够激活该组件.</p>
+</li>
+<li><p>Cocoapods/Core </p>
+<p>该组件支持了Cocoapods的Podfile和Podspec文件处理.</p>
+</li>
+<li><p>Podfile </p>
+<p>在此文件里面我们可以高度自定义指定所需的三方库版本号等.</p>
+</li>
+<li><p>Podspec </p>
+<p>该文件描述了一个库是怎样被添加到工程里的，可以列出源文件指定库的依赖关系.</p>
+</li>
+<li><p>Cocoapods/XcodeProj</p>
+<p>创建.xcWorkSpace .xcodeProj，整合所有工程文件.</p>
+</li>
+</ol>
+<h1 id="Cocoapods的安装"><a href="#Cocoapods的安装" class="headerlink" title="Cocoapods的安装"></a>Cocoapods的安装</h1><ul>
+<li>更新ruby源，因为亚马逊的被墙了所以使用淘宝的ruby源</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gem sources --remove <span class="symbol">https:</span>/<span class="regexp">/rubygems.org/</span></div><div class="line">gem sources -a <span class="symbol">https:</span>/<span class="regexp">/ruby.taobao.org/</span></div><div class="line">gem sources -l</div></pre></td></tr></table></figure>
+<ul>
+<li>用gem命令开始安装Cocoapods</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem install Cocoapods</div></pre></td></tr></table></figure>
+<blockquote>
+<p>备注</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">如果出现 </div><div class="line">While executing gem ... (Errno::EPERM)</div><div class="line">Operation not permitted - /usr/bin/xcodeproj</div><div class="line">执行 sudo gem install -n /usr/local/bin cocoapods开通权限安装</div></pre></td></tr></table></figure>
+<ul>
+<li>创建podfile并自定义需要的三方库</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>. touch podfile (创建podfile文件)</div><div class="line"><span class="number">2</span>. vi podfile</div><div class="line"><span class="number">3</span>. platform <span class="symbol">:ios</span></div><div class="line">  pod <span class="string">'SVProgressHud'</span>,       <span class="string">'~&gt; 2.0'</span></div><div class="line">  pod <span class="string">'Reachability'</span>,  <span class="string">'~&gt; 3.0.0'</span></div><div class="line">  pod <span class="string">'AFNetWorking'</span></div><div class="line">  pod <span class="string">'ShareSDK'</span></div></pre></td></tr></table></figure>
+<ul>
+<li>完成三方库定义之后更新设置Cocoapods</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod update （时间会有点久换另一种方式）</div></pre></td></tr></table></figure>
+<ul>
+<li>查找三方库</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod search ***</div></pre></td></tr></table></figure>
+<ul>
+<li>在执行pod update 或者pod install的时候屏蔽更新podspec索引</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod install --verbose --no-repo-update（如果被墙了可以用这个）</div></pre></td></tr></table></figure>
+<ul>
+<li>为某个三方库生成podspec文件，指定依赖可以用这个</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod spec create your_pod_spec_name (会生成一个.podspec的文件)</div></pre></td></tr></table></figure>
+<ul>
+<li>创建私有的pods</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pod <span class="string">'MJRefresh'</span>, <span class="symbol">:podspec</span> =&gt; <span class="string">'https://haodf.com/MJRefresh/ </span></div><div class="line"><span class="string">MJRefresh.podspec'</span></div></pre></td></tr></table></figure>
+<p>此时我们完成了最基本的使用.</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>以上命令都是亲自项目中实践过的包括一些异常，有不恰当的地方尽情指正</p>
 
           
         
@@ -568,7 +1105,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
