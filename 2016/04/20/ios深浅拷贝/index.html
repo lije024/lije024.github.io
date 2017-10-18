@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="骁驰的杂货店">
 <meta property="og:description" content="引言在对于自定义的对象支持copy功能，也就是我们要给自定义的对象发送copy message,那我们就要手动实现NSCopying协议。在项目开发中我们如果对某个字典或者数组对象进行了一次mutbleCopy其实系统默认的调用了如下API: 1- (id)mutableCopyWithZone:(nullable NSZone *)zone; 浅拷贝如果你现在通过retain或者alloc创建并">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-04-20T06:43:22.000Z">
+<meta property="og:updated_time" content="2017-10-18T06:47:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ios深浅拷贝">
 <meta name="twitter:description" content="引言在对于自定义的对象支持copy功能，也就是我们要给自定义的对象发送copy message,那我们就要手动实现NSCopying协议。在项目开发中我们如果对某个字典或者数组对象进行了一次mutbleCopy其实系统默认的调用了如下API: 1- (id)mutableCopyWithZone:(nullable NSZone *)zone; 浅拷贝如果你现在通过retain或者alloc创建并">
@@ -357,6 +357,7 @@
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSString *hdfString = @<span class="string">"haodf.com"</span>;</div><div class="line">NSString *str = hdfString;</div><div class="line">NSString *str2 = [str copy];</div></pre></td></tr></table></figure>
 <h1 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h1><p>深拷贝拷贝当前指针指向的对象，系统会随机给拷贝的对象重新分配一块内存，深拷贝以后，两份对象的内存地址不一样，指针指向也不一样。深拷贝会把当前容器中的对象重新拷贝一份放到另一个容器中，拷贝后的指针指向新的容器。</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSString *hdfString = @<span class="string">"haodf.com"</span>;</div><div class="line">NSString *str = [hdfString copy];</div><div class="line">NSString *str2 = [str mutableCopy];</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p> 1、对不可变的对象进行mutableCopy操作,是进行了一次深拷贝，返回的对象是可变的对象。</p>
 <p> 2、对不可变的对象进行copy操作，进行了一次浅拷贝，返回一个不可变的对象。</p>
 <p> 3、对可变得对象进行copy，进行了深拷贝，返回的是可变的对象。</p>

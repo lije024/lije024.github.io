@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="骁驰的杂货店">
 <meta property="og:description" content="引言在开发中我们常常会遇到布局比较复杂的cell,在滑动的时候会导致界面不流畅，出现卡顿的现象，这是由于CPU计算和GPU渲染，之间未及时交换数据丢失帧导致的结果。 imageView尽量设置为不透明 opque尽量设置为YES  当imageView的opque设置为YES的时候其alpha的属性就会无效，imageView的半透明取决于其图片半透明或者imageView本身的背景色合成的图层v">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-02-24T08:05:47.000Z">
+<meta property="og:updated_time" content="2017-10-18T06:49:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS解决滑动页面卡顿的基本技巧">
 <meta name="twitter:description" content="引言在开发中我们常常会遇到布局比较复杂的cell,在滑动的时候会导致界面不流畅，出现卡顿的现象，这是由于CPU计算和GPU渲染，之间未及时交换数据丢失帧导致的结果。 imageView尽量设置为不透明 opque尽量设置为YES  当imageView的opque设置为YES的时候其alpha的属性就会无效，imageView的半透明取决于其图片半透明或者imageView本身的背景色合成的图层v">
@@ -373,6 +373,7 @@
 <p>alpha通道的概念特地请教了下公司UI MM,是透明的意思。</p>
 </li>
 </ul>
+<a id="more"></a>
 <h1 id="cell上layer尽量避免使用圆角"><a href="#cell上layer尽量避免使用圆角" class="headerlink" title="cell上layer尽量避免使用圆角"></a>cell上layer尽量避免使用圆角</h1><ul>
 <li><p>在工作中关于滑动界面我们会时常遇到cell行设置头像为圆角等需求，这时候我们尽量避免使用<code>layder.cornerRadius</code>，因为这会触发离屏渲染。离屏渲染很耗时间。</p>
 <p>离屏渲染：是GPU渲染区的一个渲染缓冲区，我们所用的所有显示屏的图形图像都是通过GPU进行渲染，然后显示在屏幕上。GPU负责渲染会把渲染的图形放到缓冲区然后CPU就会发一个垂直信号显示到屏幕。</p>
