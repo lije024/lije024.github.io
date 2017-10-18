@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="引言在我们项目开发中我们经常会遇到关于图片的处理。 在图片上传中我们会从用户体验方面考虑用户的流量是否能够很好的支持上传的图片，我们会对图片先压缩后上传。 当我们考虑到手机的本身内存我们会对下载的图片进行压缩，以便节省手机内存成本。 读取图片的方式121、UIImageJPEGRepresentation()此API需要两个参数，一个是图片对象，一个是压缩系数，但是图片的质量会有所下降，但是体积不">
+<meta name="description" content="本周工作内容汇总本周主要工作内容：123* 修改v1.2版本新功能以及线上bug* 适配ios11，修复故事、首页、详情播放页的crash 李积恩12345678910111213* 修复ios11首页滑动播放视频时候crash* 修复ios11在首页点击故事头像，在用户故事页面，点击发消息crash* 修复ios11他人故事分段播放crash* 修复ios11进详情播放页面无法播放的问题* 修复">
 <meta name="keywords" content="UIImage,imageCompress">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图片的压缩方式">
-<meta property="og:url" content="http://lije024.github.io/2016/03/14/图片的压缩方式/index.html">
+<meta property="og:url" content="http://lije024.github.io/2016/03/14/本周工作内容汇总-1-1/index.html">
 <meta property="og:site_name" content="骁驰的杂货店">
-<meta property="og:description" content="引言在我们项目开发中我们经常会遇到关于图片的处理。 在图片上传中我们会从用户体验方面考虑用户的流量是否能够很好的支持上传的图片，我们会对图片先压缩后上传。 当我们考虑到手机的本身内存我们会对下载的图片进行压缩，以便节省手机内存成本。 读取图片的方式121、UIImageJPEGRepresentation()此API需要两个参数，一个是图片对象，一个是压缩系数，但是图片的质量会有所下降，但是体积不">
+<meta property="og:description" content="本周工作内容汇总本周主要工作内容：123* 修改v1.2版本新功能以及线上bug* 适配ios11，修复故事、首页、详情播放页的crash 李积恩12345678910111213* 修复ios11首页滑动播放视频时候crash* 修复ios11在首页点击故事头像，在用户故事页面，点击发消息crash* 修复ios11他人故事分段播放crash* 修复ios11进详情播放页面无法播放的问题* 修复">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-18T08:53:50.000Z">
+<meta property="og:updated_time" content="2017-10-18T08:56:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图片的压缩方式">
-<meta name="twitter:description" content="引言在我们项目开发中我们经常会遇到关于图片的处理。 在图片上传中我们会从用户体验方面考虑用户的流量是否能够很好的支持上传的图片，我们会对图片先压缩后上传。 当我们考虑到手机的本身内存我们会对下载的图片进行压缩，以便节省手机内存成本。 读取图片的方式121、UIImageJPEGRepresentation()此API需要两个参数，一个是图片对象，一个是压缩系数，但是图片的质量会有所下降，但是体积不">
+<meta name="twitter:description" content="本周工作内容汇总本周主要工作内容：123* 修改v1.2版本新功能以及线上bug* 适配ios11，修复故事、首页、详情播放页的crash 李积恩12345678910111213* 修复ios11首页滑动播放视频时候crash* 修复ios11在首页点击故事头像，在用户故事页面，点击发消息crash* 修复ios11他人故事分段播放crash* 修复ios11进详情播放页面无法播放的问题* 修复">
 
 
 
@@ -122,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://lije024.github.io/2016/03/14/图片的压缩方式/"/>
+  <link rel="canonical" href="http://lije024.github.io/2016/03/14/本周工作内容汇总-1-1/"/>
 
 
 
@@ -275,7 +275,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lije024.github.io/2016/03/14/图片的压缩方式/">
+    <link itemprop="mainEntityOfPage" href="http://lije024.github.io/2016/03/14/本周工作内容汇总-1-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="骁驰">
@@ -364,15 +364,13 @@
       
 
       
-        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>在我们项目开发中我们经常会遇到关于图片的处理。</p>
-<p>在图片上传中我们会从用户体验方面考虑用户的流量是否能够很好的支持上传的图片，我们会对图片先压缩后上传。</p>
-<p>当我们考虑到手机的本身内存我们会对下载的图片进行压缩，以便节省手机内存成本。</p>
-<h1 id="读取图片的方式"><a href="#读取图片的方式" class="headerlink" title="读取图片的方式"></a>读取图片的方式</h1><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>、UIImageJPEGRepresentation()此API需要两个参数，一个是图片对象，一个是压缩系数，但是图片的质量会有所下降，但是体积不会变。</div><div class="line"><span class="number">2</span>、UIImagePNGRepresentation()，只需要一个图片的对象参数，不会对图片压缩，原图展示。</div></pre></td></tr></table></figure>
-<h1 id="对图片的质量进行压缩"><a href="#对图片的质量进行压缩" class="headerlink" title="对图片的质量进行压缩"></a>对图片的质量进行压缩</h1><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>、UIImageJPEGRepresentation()返回的数据量要比UIImagePNGRepresentation()大很多，前者返回的数据量要比后者小很多，前者返回的数据量大概是<span class="number">115</span>kb，后者返回的数据大概为<span class="number">190</span>kb，相差很大。</div><div class="line"><span class="number">2</span>、如果对UIImageJPEGRepresentation()的系数设置为<span class="number">0</span>.<span class="number">5</span>，再加上本身不是很追求图片的质量，那么会大大节省图片的资源大小，大概为<span class="number">11</span>kb。</div><div class="line"></div><div class="line">+ (UIImage *)<span class="symbol">resuceImage:</span>(UIImage *)hdfImage <span class="symbol">percent:</span>(CGFloat)percent &#123;</div><div class="line">  UIImage *image = <span class="literal">nil</span>;</div><div class="line">  NSData *data = <span class="literal">nil</span>;</div><div class="line">  </div><div class="line">  <span class="keyword">if</span>(hdfImage) &#123;</div><div class="line">   data = UIImageJPEGRepresentation(hdfImage, percent);</div><div class="line">   image = [UIImage <span class="symbol">imageWithData:</span>data];</div><div class="line">  &#125; </div><div class="line">  </div><div class="line">  <span class="keyword">return</span> image;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<h1 id="压缩图片到指定的尺寸"><a href="#压缩图片到指定的尺寸" class="headerlink" title="压缩图片到指定的尺寸"></a>压缩图片到指定的尺寸</h1><p>我们传入理想的图片尺寸即可。</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">+ (UIImage *)<span class="symbol">reduceImage:</span>(UIImge *)hdfImage <span class="symbol">reduceSize:</span>(CGSize)reduceSize &#123;</div><div class="line">  UIGraphicsBeginImageContext(reduceSize);</div><div class="line">  </div><div class="line">  UIIMage *image = <span class="literal">nil</span>;</div><div class="line">  <span class="keyword">if</span>(hdfImage) &#123;</div><div class="line">    [image <span class="symbol">drawInRect:</span>CGRectMake(<span class="number">0</span>, <span class="number">0</span>, reduceSize.width, reducdeSize.height)];</div><div class="line">    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();</div><div class="line">    UIGraphicsEndImageContext();</div><div class="line">  &#125;</div><div class="line">   <span class="keyword">return</span> image;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="等比例压缩图片"><a href="#等比例压缩图片" class="headerlink" title="等比例压缩图片"></a>等比例压缩图片</h1><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">-(UIImage *) <span class="symbol">imageCompressForWidth:</span>(UIImage *)sourceImage <span class="symbol">targetWidth:</span>(CGFloat)defineWidth &#123;</div><div class="line">    UIImage *newImage = <span class="literal">nil</span>;</div><div class="line">    CGSize imageSize = sourceImage.size;</div><div class="line">    CGFloat width = imageSize.width;</div><div class="line">    CGFloat height = imageSize.height;</div><div class="line">    CGFloat targetWidth = defineWidth;</div><div class="line">    CGFloat targetHeight = height / (width / targetWidth);</div><div class="line">    CGSize size = CGSizeMake(targetWidth, targetHeight);</div><div class="line">    CGFloat scaleFactor = <span class="number">0</span>.<span class="number">0</span>;</div><div class="line">    CGFloat scaledWidth = targetWidth;</div><div class="line">    CGFloat scaledHeight = targetHeight;</div><div class="line">    CGPoint thumbnailPoint = CGPointMake(<span class="number">0</span>.<span class="number">0</span>, <span class="number">0</span>.<span class="number">0</span>);</div><div class="line">    <span class="keyword">if</span>(CGSizeEqualToSize(imageSize, size) == NO)&#123;</div><div class="line">        CGFloat widthFactor = targetWidth / width;</div><div class="line">        CGFloat heightFactor = targetHeight / height;</div><div class="line">    <span class="keyword">if</span>(widthFactor &gt; heightFactor)&#123;</div><div class="line">        scaleFactor = widthFactor;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">        scaleFactor = heightFactor;</div><div class="line">    &#125;</div><div class="line">    scaledWidth = width * scaleFactor;</div><div class="line">    scaledHeight = height * scaleFactor;</div><div class="line">    <span class="keyword">if</span>(widthFactor &gt; heightFactor)&#123;</div><div class="line">        thumbnailPoint.y = (targetHeight - scaledHeight) * <span class="number">0</span>.<span class="number">5</span>;</div><div class="line">     &#125;<span class="keyword">else</span> <span class="keyword">if</span>(widthFactor &lt; heightFactor)&#123;</div><div class="line">        thumbnailPoint.x = (targetWidth - scaledWidth) * <span class="number">0</span>.<span class="number">5</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    UIGraphicsBeginImageContext(size);</div><div class="line">    CGRect thumbnailRect = CGRectZero;</div><div class="line">    thumbnailRect.origin = thumbnailPoint;</div><div class="line">    thumbnailRect.size.width = scaledWidth;</div><div class="line">    thumbnailRect.size.height = scaledHeight;</div><div class="line"></div><div class="line">    [sourceImage <span class="symbol">drawInRect:</span>thumbnailRect];</div><div class="line"></div><div class="line">    newImage = UIGraphicsGetImageFromCurrentImageContext();</div><div class="line">    <span class="keyword">if</span>(newImage == <span class="literal">nil</span>)&#123;</div><div class="line">       NSLog(@<span class="string">"scale image fail"</span>);</div><div class="line">    &#125;</div><div class="line">    UIGraphicsEndImageContext();</div><div class="line">    <span class="keyword">return</span> newImage;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h1 id="本周工作内容汇总"><a href="#本周工作内容汇总" class="headerlink" title="本周工作内容汇总"></a>本周工作内容汇总</h1><h3 id="本周主要工作内容："><a href="#本周主要工作内容：" class="headerlink" title="本周主要工作内容："></a>本周主要工作内容：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">* 修改v1.2版本新功能以及线上bug</div><div class="line"></div><div class="line">* 适配ios11，修复故事、首页、详情播放页的crash</div></pre></td></tr></table></figure>
+<h2 id="李积恩"><a href="#李积恩" class="headerlink" title="李积恩"></a>李积恩</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">* 修复ios11首页滑动播放视频时候crash</div><div class="line"></div><div class="line">* 修复ios11在首页点击故事头像，在用户故事页面，点击发消息crash</div><div class="line"></div><div class="line">* 修复ios11他人故事分段播放crash</div><div class="line"></div><div class="line">* 修复ios11进详情播放页面无法播放的问题</div><div class="line"></div><div class="line">* 修复ios11故事拍摄完成进入查看，页面卡死问题</div><div class="line"></div><div class="line">* 对接V1.2埋点数据，修正测试通过性能工具测埋点的方式，采用上传日志查看埋点格式拼接contents的方式</div><div class="line"></div><div class="line">* 与现有服务端RD对接iOS现有的一些接口业务</div></pre></td></tr></table></figure>
+<h2 id="郭真强"><a href="#郭真强" class="headerlink" title="郭真强"></a>郭真强</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">* 熟悉现有工程代码以及业务结构</div><div class="line"></div><div class="line">* 修改播放页面上下滑动引起状态栏被遮挡的bug</div><div class="line"></div><div class="line">* 熟悉现有网络请求框架，修改之前的请求框架，使其满足现在的参数签名方式，并添加网络请求DNS缓存方式，避免无效请求，产生服务端不必要的开销</div><div class="line"></div><div class="line">* 重新封装网络框架，以及大文件通过sessionManager的上传下载</div><div class="line"></div><div class="line">* 封装队列上传框架，使发布时候任务排队上传</div><div class="line"></div><div class="line">* 优化首页滑动卡顿问题</div></pre></td></tr></table></figure>
+<h2 id="王雪东"><a href="#王雪东" class="headerlink" title="王雪东"></a>王雪东</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">* appV1.2版本点击话题页面crash修复</div><div class="line"></div><div class="line">* 修复ios11发现页面快速滑动crash</div><div class="line"></div><div class="line">* 适配iOS11的修改</div><div class="line"></div><div class="line">* iPhone X界面的适配问题测试</div></pre></td></tr></table></figure>
+<h2 id="魏雷"><a href="#魏雷" class="headerlink" title="魏雷"></a>魏雷</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">* 修复首页左滑切换相机的问题</div><div class="line"></div><div class="line">* 修复视频添加贴纸手势冲突问题</div><div class="line"></div><div class="line">* 修复ios11发现页面快速滑动crash</div><div class="line"></div><div class="line">* 适配iOS11的修改</div></pre></td></tr></table></figure>
+<h2 id="李豫豫"><a href="#李豫豫" class="headerlink" title="李豫豫"></a>李豫豫</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">* 熟悉私信、个人中心模块的代码</div><div class="line">* 修复了私信、故事最终页bug</div></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -404,8 +402,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/14/本周工作内容汇总-1-1/" rel="next" title="图片的压缩方式">
-                <i class="fa fa-chevron-left"></i> 图片的压缩方式
+              <a href="/2016/02/24/iOS解决滑动页面卡顿的基本技巧/" rel="next" title="iOS解决滑动页面卡顿的基本技巧">
+                <i class="fa fa-chevron-left"></i> iOS解决滑动页面卡顿的基本技巧
               </a>
             
           </div>
@@ -414,8 +412,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/04/20/ios深浅拷贝/" rel="prev" title="ios深浅拷贝">
-                ios深浅拷贝 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/03/14/图片的压缩方式/" rel="prev" title="图片的压缩方式">
+                图片的压缩方式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -575,7 +573,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#读取图片的方式"><span class="nav-number">2.</span> <span class="nav-text">读取图片的方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对图片的质量进行压缩"><span class="nav-number">3.</span> <span class="nav-text">对图片的质量进行压缩</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#压缩图片到指定的尺寸"><span class="nav-number">4.</span> <span class="nav-text">压缩图片到指定的尺寸</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#等比例压缩图片"><span class="nav-number">5.</span> <span class="nav-text">等比例压缩图片</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#本周工作内容汇总"><span class="nav-number">1.</span> <span class="nav-text">本周工作内容汇总</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#本周主要工作内容："><span class="nav-number">1.0.1.</span> <span class="nav-text">本周主要工作内容：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#李积恩"><span class="nav-number">1.1.</span> <span class="nav-text">李积恩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#郭真强"><span class="nav-number">1.2.</span> <span class="nav-text">郭真强</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#王雪东"><span class="nav-number">1.3.</span> <span class="nav-text">王雪东</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#魏雷"><span class="nav-number">1.4.</span> <span class="nav-text">魏雷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#李豫豫"><span class="nav-number">1.5.</span> <span class="nav-text">李豫豫</span></a></li></ol></li></ol></div>
             
 
           </div>
