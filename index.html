@@ -796,57 +796,28 @@
 
       
         
-          
-            <h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>为了减轻测试人员的测试任务，<code>monkey</code>测试是利用测试工具执行相应的测试脚本，实现对程序的执行过程、操作流程进行录制</p>
+          <h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>为了减轻测试人员的测试任务，<code>monkey</code>测试是利用测试工具执行相应的测试脚本，实现对程序的执行过程、操作流程进行录制</p>
 <hr>
 <h1 id="利用foneMonkey测试工具包"><a href="#利用foneMonkey测试工具包" class="headerlink" title="利用foneMonkey测试工具包"></a>利用foneMonkey测试工具包</h1><ul>
 <li>下载foneMonkey测试工具包，一般都是.zip的需要解压</li>
-<li><p>xcode打开工程，添加一个target<br><img src="/Users/lije-Mac/Desktop/898456-5422f36bdb08659f.jpeg" alt="MacDown logo"></p>
-</li>
-<li><p>重命名</p>
-</li>
+<li>xcode打开工程，添加一个target</li>
+</ul>
+<p><img src="/Users/lije-Mac/Desktop/898456-5422f36bdb08659f.jpeg" alt="MacDown logo"></p>
+<ul>
+<li>重命名</li>
 </ul>
 <p><img src="/Users/lije-Mac/Desktop/898456-7ec9d2baab49aaf7.png" alt="MacDown logo"></p>
 <ul>
-<li><p>选取刚才创建的target并将解压好的FontMonkey倒入工程目录<br><img src="/Users/lije-Mac/Desktop/898456-6d835a83248a1d63.png" alt="MacDown logo"></p>
-</li>
-<li><p>导完工程目录后还需要我们手动添加几个系统框架文件<br>libxml2.dylib、SenTestingKit.framework、QuartzCore.framework</p>
-</li>
-<li><p>修改工程的配置文件 Buile Seting－&gt;Linking-&gt;Other Linker Flags, 改成-all_load</p>
-</li>
+<li>选取刚才创建的target并将解压好的FontMonkey倒入工程目录</li>
 </ul>
-<p><img src="/Users/lije-Mac/Desktop/898456-205f331f5824278e.jpeg" alt="MacDown logo"></p>
-<ul>
-<li><p>选择真机或者模拟器，最好是真机，然后开始编译程序</p>
-</li>
-<li><p>在屏幕下方会出现好几个按钮，点击第二个开始录制程序，完成之后点击保存即可</p>
-</li>
-</ul>
-<p>利用苹果自带的<code>Automation</code>工具，这种方法只适合已经有现成测试脚本或者能够独立写js脚本的开发者，如果没有测试脚本，可以直接使用第一种方法使用现有的测试工具包含测试脚本。</p>
-<hr>
-<ul>
-<li><p>打开xcode的profile,点击instruments里面的<code>Automation</code>，此处就不给截图了，对各位大牛来说这都属于多余</p>
-</li>
-<li><p>如果我们有<code>js</code>脚本点击<code>Automation</code>右下角处有create和add选项，可以直接导入脚本，或者可以复制到代码编译框中</p>
-</li>
-</ul>
-<p><img src="/Users/lije-Mac/Desktop/898456-8c594e47f622e62e.png" alt="MacDown logo"></p>
-<ul>
-<li><p>选择你要进行测试的app</p>
-</li>
-<li><p>当有脚本之后，在<code>Automation</code>左上角有个record，点击开始执行脚本，<br>此处与方法一不同的是：这里不是录制过程，是脚本代码在代替测试人员手动点击，所触发的事件</p>
-</li>
-</ul>
-<p><img src="/Users/lije-Mac/Desktop/898456-48794bf9b9a5ed2d.png" alt="MacDown logo"></p>
-<hr>
-<ul>
-<li>备注</li>
-</ul>
-<p>我们在工程编译的过程中可能会遇到编译无法通过的报错bug,如下图：</p>
-<p><img src="/Users/lije-Mac/Desktop/898456-5fa4277575ea2833.jpg" alt="MacDown logo"></p>
-<p>出现这个我们只要把-all_load的中文格式改成英文即可，如有别的问题继续探讨</p>
-
-          
+<p><img src="/Users/lije-Mac/Desktop/898456-6d835a83248a1d63.png" alt="MacDown logo"></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/02/22/ios-Monkey性能测试/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
