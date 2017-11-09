@@ -85,11 +85,11 @@
 <meta name="keywords" content="仿射变换,UIGestureRecognizer">
 <meta property="og:type" content="article">
 <meta property="og:title" content="视频添加文字和贴纸需求分析">
-<meta property="og:url" content="http://lije024.github.io/2017/11/08/视频添加文字和贴纸需求分析/index.html">
+<meta property="og:url" content="http://lije024.github.io/2017/11/09/视频添加文字和贴纸需求分析/index.html">
 <meta property="og:site_name" content="骁驰的杂货店">
 <meta property="og:description" content="视频添加文字和贴纸需求分析 贴纸除了天气海拔等物理来源之外，需要通过服务下载贴纸资源，外加内置系统表情。  在视频编辑界面添加贴纸层，对贴纸进行拖动、缩放、旋转、删除操作。  在视频编辑界面添加文字层，可以改变文字颜色，拖、缩放、旋转、删除操作。   技术背景 对贴纸和文字进行操作，涉及到iOS UIGestureRecongizer手势响应的管理。  对文字视图做操作编辑状态下恢复原状，涉及iO">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-09T09:23:53.000Z">
+<meta property="og:updated_time" content="2017-11-09T09:29:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="视频添加文字和贴纸需求分析">
 <meta name="twitter:description" content="视频添加文字和贴纸需求分析 贴纸除了天气海拔等物理来源之外，需要通过服务下载贴纸资源，外加内置系统表情。  在视频编辑界面添加贴纸层，对贴纸进行拖动、缩放、旋转、删除操作。  在视频编辑界面添加文字层，可以改变文字颜色，拖、缩放、旋转、删除操作。   技术背景 对贴纸和文字进行操作，涉及到iOS UIGestureRecongizer手势响应的管理。  对文字视图做操作编辑状态下恢复原状，涉及iO">
@@ -122,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://lije024.github.io/2017/11/08/视频添加文字和贴纸需求分析/"/>
+  <link rel="canonical" href="http://lije024.github.io/2017/11/09/视频添加文字和贴纸需求分析/"/>
 
 
 
@@ -275,7 +275,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lije024.github.io/2017/11/08/视频添加文字和贴纸需求分析/">
+    <link itemprop="mainEntityOfPage" href="http://lije024.github.io/2017/11/09/视频添加文字和贴纸需求分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="骁驰">
@@ -304,8 +304,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-08T17:16:00+08:00">
-                2017-11-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-09T17:16:00+08:00">
+                2017-11-09
               </time>
             
 
@@ -380,6 +380,7 @@
 </ul>
 <h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>在视图对象上添加手势，并且在各个手势selector API里面实现对视图的控制。</p>
 <h3 id="一、利用UIGestureRecongizer方法"><a href="#一、利用UIGestureRecongizer方法" class="headerlink" title="一、利用UIGestureRecongizer方法"></a>一、利用UIGestureRecongizer方法</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">/<span class="regexp">/ 添加所有的手势  </span></div><div class="line"><span class="regexp">- (void) addGestureRecognizerToView:(UIView *)view &#123;  </span></div><div class="line"><span class="regexp">    /</span><span class="regexp">/ 旋转手势  </span></div><div class="line"><span class="regexp">    UIRotationGestureRecognizer *rotationGestureRecognizer = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(rotateView:)];  </span></div><div class="line"><span class="regexp">    [view addGestureRecognizer:rotationGestureRecognizer];  </span></div><div class="line"><span class="regexp">      </span></div><div class="line"><span class="regexp">    /</span><span class="regexp">/ 缩放手势  </span></div><div class="line"><span class="regexp">    UIPinchGestureRecognizer *pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchView:)];  </span></div><div class="line"><span class="regexp">    [view addGestureRecognizer:pinchGestureRecognizer];  </span></div><div class="line"><span class="regexp">      </span></div><div class="line"><span class="regexp">    /</span><span class="regexp">/ 移动手势  </span></div><div class="line"><span class="regexp">    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panView:)];  </span></div><div class="line"><span class="regexp">    [view addGestureRecognizer:panGestureRecognizer];  </span></div><div class="line"><span class="regexp">&#125;</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/<span class="regexp">/ 处理旋转手势  </span></div><div class="line"><span class="regexp">- (void) rotateView:(UIRotationGestureRecognizer *)rotationGestureRecognizer &#123;  </span></div><div class="line"><span class="regexp">    UIView *view = rotationGestureRecognizer.view;  </span></div><div class="line"><span class="regexp">    if (rotationGestureRecognizer.state == UIGestureRecognizerStateBegan || rotationGestureRecognizer.state == UIGestureRecognizerStateChanged) &#123;  </span></div><div class="line"><span class="regexp">        view.transform = CGAffineTransformRotate(view.transform, rotationGestureRecognizer.rotation);  </span></div><div class="line"><span class="regexp">        [rotationGestureRecognizer setRotation:0];  </span></div><div class="line"><span class="regexp">    &#125;  </span></div><div class="line"><span class="regexp">&#125;</span></div></pre></td></tr></table></figure>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/<span class="regexp">/ 处理缩放手势  </span></div><div class="line"><span class="regexp">- (void) pinchView:(UIPinchGestureRecognizer *)pinchGestureRecognizer &#123;  </span></div><div class="line"><span class="regexp">    UIView *view = pinchGestureRecognizer.view;  </span></div><div class="line"><span class="regexp">    if (pinchGestureRecognizer.state == UIGestureRecognizerStateBegan || pinchGestureRecognizer.state == UIGestureRecognizerStateChanged) &#123;  </span></div><div class="line"><span class="regexp">        view.transform = CGAffineTransformScale(view.transform, pinchGestureRecognizer.scale, pinchGestureRecognizer.scale);  </span></div><div class="line"><span class="regexp">        pinchGestureRecognizer.scale = 1;  </span></div><div class="line"><span class="regexp">    &#125;  </span></div><div class="line"><span class="regexp">&#125;</span></div></pre></td></tr></table></figure>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/<span class="regexp">/ 处理拖拉手势  </span></div><div class="line"><span class="regexp">- (void) panView:(UIPanGestureRecognizer *)panGestureRecognizer &#123;  </span></div><div class="line"><span class="regexp">    UIView *view = panGestureRecognizer.view;  </span></div><div class="line"><span class="regexp">    if (panGestureRecognizer.state == UIGestureRecognizerStateBegan || panGestureRecognizer.state == UIGestureRecognizerStateChanged) &#123;  </span></div><div class="line"><span class="regexp">        CGPoint translation = [panGestureRecognizer translationInView:view.superview];  </span></div><div class="line"><span class="regexp">        [view setCenter:(CGPoint)&#123;view.center.x + translation.x, view.center.y + translation.y&#125;];  </span></div><div class="line"><span class="regexp">        [panGestureRecognizer setTranslation:CGPointZero inView:view.superview];  </span></div><div class="line"><span class="regexp">    &#125;  </span></div><div class="line"><span class="regexp">&#125;</span></div></pre></td></tr></table></figure>

@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="骁驰的杂货店">
 <meta property="og:description" content="涂鸦功能需求分析 在短视频进入编辑界面的时候在视频预览播放层上用户点击涂鸦按钮调出涂鸦面板。  在涂鸦面板为第一次响应的时候，编辑界面面板不响应。  涂鸦过程中可以选择画笔颜色，同时可以调节画笔宽度。  用户可以撤销涂鸦，进行清屏操作。   技术背景 涂鸦功能涉及到iOS开发Cocoa框架中绘图操作。  解决方案一、UIBezierPath 绘制画板方法UIBerierPath的原理1234567">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-09T09:25:03.000Z">
+<meta property="og:updated_time" content="2017-11-09T09:29:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="涂鸦功能需求分析">
 <meta name="twitter:description" content="涂鸦功能需求分析 在短视频进入编辑界面的时候在视频预览播放层上用户点击涂鸦按钮调出涂鸦面板。  在涂鸦面板为第一次响应的时候，编辑界面面板不响应。  涂鸦过程中可以选择画笔颜色，同时可以调节画笔宽度。  用户可以撤销涂鸦，进行清屏操作。   技术背景 涂鸦功能涉及到iOS开发Cocoa框架中绘图操作。  解决方案一、UIBezierPath 绘制画板方法UIBerierPath的原理1234567">
@@ -378,6 +378,7 @@
 <li>涂鸦功能涉及到iOS开发Cocoa框架中绘图操作。</li>
 </ul>
 <h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><h2 id="一、UIBezierPath-绘制画板方法"><a href="#一、UIBezierPath-绘制画板方法" class="headerlink" title="一、UIBezierPath 绘制画板方法"></a>一、UIBezierPath 绘制画板方法</h2><h3 id="UIBerierPath的原理"><a href="#UIBerierPath的原理" class="headerlink" title="UIBerierPath的原理"></a>UIBerierPath的原理</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>、 UIBezierPath使用UIBezierPath可以创建基于矢量的路径，此类是Core Graphics框架关于路径的封装。使用此类可以定义简单的形状，如椭圆、矩形或者有多个直线和曲线段组成的形状等。</div><div class="line"></div><div class="line"><span class="number">2</span>、UIBezierPath是CGPathRef数据类型的封装。如果是基于矢量形状的路径，都用直线和曲线去创建。我们使用直线段去创建矩形和多边形，使用曲线去创建圆弧（arc）、圆或者其他复杂的曲线形状。</div><div class="line"></div><div class="line"><span class="number">3</span>、使用UIBezierPath画图步骤：</div><div class="line"></div><div class="line">创建一个UIBezierPath对象</div><div class="line"></div><div class="line">调用-<span class="symbol">moveToPoint:</span>设置初始线段的起点</div><div class="line"></div><div class="line">添加线或者曲线去定义一个或者多个子路径</div><div class="line"></div><div class="line">改变UIBezierPath对象跟绘图相关的属性。如，我们可以设置画笔的属性、填充样式等。</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="实现细节"><a href="#实现细节" class="headerlink" title="实现细节"></a>实现细节</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">创建一继承自UIBerierPath的子类，在子类中用两个属性分别记录画笔的颜色和是否为清除涂鸦路径操作。</div><div class="line"></div><div class="line">   @property (nonatomic,copy) UIColor *lineColor; <span class="regexp">//</span> 画笔的颜色</div><div class="line">   @property (nonatomic,assign) BOOL isCleanScreen; <span class="regexp">//</span> 是否撤销</div></pre></td></tr></table></figure>
 <p>需要实现的API</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- (void)<span class="symbol">touchesBegan:</span>(NSSet *)touches <span class="symbol">withEvent:</span>(UIEvent *)event;</div><div class="line">- (void)<span class="symbol">touchesMoved:</span>(NSSet&lt;UITouch *&gt; *)touches <span class="symbol">withEvent:</span>(UIEvent *)event;</div><div class="line">- (void)<span class="symbol">touchesEnded:</span>(NSSet&lt;UITouch *&gt; *)touches <span class="symbol">withEvent:</span>(UIEvent *)event;</div></pre></td></tr></table></figure>
@@ -427,7 +428,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/08/视频添加文字和贴纸需求分析/" rel="next" title="视频添加文字和贴纸需求分析">
+              <a href="/2017/11/09/视频添加文字和贴纸需求分析/" rel="next" title="视频添加文字和贴纸需求分析">
                 <i class="fa fa-chevron-left"></i> 视频添加文字和贴纸需求分析
               </a>
             
