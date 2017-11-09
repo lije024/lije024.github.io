@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="mutableCopy,copy," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -81,18 +81,17 @@
 
 
 
-<meta name="description" content="引言在对于自定义的对象支持copy功能，也就是我们要给自定义的对象发送copy message,那我们就要手动实现NSCopying协议。在项目开发中我们如果对某个字典或者数组对象进行了一次mutbleCopy其实系统默认的调用了如下API: 1- (id)mutableCopyWithZone:(nullable NSZone *)zone; 浅拷贝如果你现在通过retain或者alloc创建并">
-<meta name="keywords" content="mutableCopy,copy">
+<meta name="description" content="涂鸦功能需求分析 在短视频进入编辑界面的时候在视频预览播放层上用户点击涂鸦按钮调出涂鸦面板。  在涂鸦面板为第一次响应的时候，编辑界面面板不响应。  涂鸦过程中可以选择画笔颜色，同时可以调节画笔宽度。  用户可以撤销涂鸦，进行清屏操作。   技术背景 涂鸦功能涉及到iOS开发Cocoa框架中绘图操作。  解决方案一、UIBezierPath 绘制画板方法UIBerierPath的原理1234567">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ios深浅拷贝">
-<meta property="og:url" content="http://lije024.github.io/2016/04/20/ios深浅拷贝/index.html">
+<meta property="og:title" content="骁驰的杂货店">
+<meta property="og:url" content="http://lije024.github.io/2017/11/09/涂鸦功能需求分析/index.html">
 <meta property="og:site_name" content="骁驰的杂货店">
-<meta property="og:description" content="引言在对于自定义的对象支持copy功能，也就是我们要给自定义的对象发送copy message,那我们就要手动实现NSCopying协议。在项目开发中我们如果对某个字典或者数组对象进行了一次mutbleCopy其实系统默认的调用了如下API: 1- (id)mutableCopyWithZone:(nullable NSZone *)zone; 浅拷贝如果你现在通过retain或者alloc创建并">
+<meta property="og:description" content="涂鸦功能需求分析 在短视频进入编辑界面的时候在视频预览播放层上用户点击涂鸦按钮调出涂鸦面板。  在涂鸦面板为第一次响应的时候，编辑界面面板不响应。  涂鸦过程中可以选择画笔颜色，同时可以调节画笔宽度。  用户可以撤销涂鸦，进行清屏操作。   技术背景 涂鸦功能涉及到iOS开发Cocoa框架中绘图操作。  解决方案一、UIBezierPath 绘制画板方法UIBerierPath的原理1234567">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-18T08:42:53.000Z">
+<meta property="og:updated_time" content="2017-11-09T08:02:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ios深浅拷贝">
-<meta name="twitter:description" content="引言在对于自定义的对象支持copy功能，也就是我们要给自定义的对象发送copy message,那我们就要手动实现NSCopying协议。在项目开发中我们如果对某个字典或者数组对象进行了一次mutbleCopy其实系统默认的调用了如下API: 1- (id)mutableCopyWithZone:(nullable NSZone *)zone; 浅拷贝如果你现在通过retain或者alloc创建并">
+<meta name="twitter:title" content="骁驰的杂货店">
+<meta name="twitter:description" content="涂鸦功能需求分析 在短视频进入编辑界面的时候在视频预览播放层上用户点击涂鸦按钮调出涂鸦面板。  在涂鸦面板为第一次响应的时候，编辑界面面板不响应。  涂鸦过程中可以选择画笔颜色，同时可以调节画笔宽度。  用户可以撤销涂鸦，进行清屏操作。   技术背景 涂鸦功能涉及到iOS开发Cocoa框架中绘图操作。  解决方案一、UIBezierPath 绘制画板方法UIBerierPath的原理1234567">
 
 
 
@@ -122,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://lije024.github.io/2016/04/20/ios深浅拷贝/"/>
+  <link rel="canonical" href="http://lije024.github.io/2017/11/09/涂鸦功能需求分析/"/>
 
 
 
 
 
-  <title>ios深浅拷贝 | 骁驰的杂货店</title>
+  <title> | 骁驰的杂货店</title>
   
 
 
@@ -275,7 +274,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lije024.github.io/2016/04/20/ios深浅拷贝/">
+    <link itemprop="mainEntityOfPage" href="http://lije024.github.io/2017/11/09/涂鸦功能需求分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="骁驰">
@@ -292,7 +291,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ios深浅拷贝</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -304,8 +303,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-04-20T12:02:02+08:00">
-                2016-04-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-09T16:02:43+08:00">
+                2017-11-09
               </time>
             
 
@@ -314,28 +313,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Foundation/" itemprop="url" rel="index">
-                    <span itemprop="name">Foundation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -364,19 +341,33 @@
       
 
       
-        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>在对于自定义的对象支持copy功能，也就是我们要给自定义的对象发送copy message,那我们就要手动实现NSCopying协议。在项目开发中我们如果对某个字典或者数组对象进行了一次mutbleCopy其实系统默认的调用了如下API:</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (id)<span class="symbol">mutableCopyWithZone:</span>(nullable NSZone *)zone;</div></pre></td></tr></table></figure>
-<h1 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h1><p>如果你现在通过retain或者alloc创建并持有了一个对象，浅拷贝就是重新拷贝了一个指向当前这个对象的指针，此时就有两份指针同时指向当前对象的内存区域，即指向同一块内存区域，对象只有一份并没有发生任何变化。</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSString *hdfString = @<span class="string">"haodf.com"</span>;</div><div class="line">NSString *str = hdfString;</div><div class="line">NSString *str2 = [str copy];</div></pre></td></tr></table></figure>
-<h1 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h1><p>深拷贝拷贝当前指针指向的对象，系统会随机给拷贝的对象重新分配一块内存，深拷贝以后，两份对象的内存地址不一样，指针指向也不一样。深拷贝会把当前容器中的对象重新拷贝一份放到另一个容器中，拷贝后的指针指向新的容器。</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSString *hdfString = @<span class="string">"haodf.com"</span>;</div><div class="line">NSString *str = [hdfString copy];</div><div class="line">NSString *str2 = [str mutableCopy];</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p> 1、对不可变的对象进行mutableCopy操作,是进行了一次深拷贝，返回的对象是可变的对象。</p>
-<p> 2、对不可变的对象进行copy操作，进行了一次浅拷贝，返回一个不可变的对象。</p>
-<p> 3、对可变得对象进行copy，进行了深拷贝，返回的是可变的对象。</p>
-<p> 4、 对可变的对象进行了一次mutableCopy，是进行了一次深拷贝， 返回的对象是一个可变的对象。</p>
-<p> 5、想要让自定义的对象支持copy和mutableCopy那么就要对应实现NSCopying协议，和NSMutableCopying协议。</p>
-<h1 id="retain和copy的区别："><a href="#retain和copy的区别：" class="headerlink" title="retain和copy的区别："></a>retain和copy的区别：</h1><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>、retain是对当前对象增加了一个指针指向，使对象的引用计数器加<span class="number">1</span>， 是进行了一次安全的浅拷贝操作。</div><div class="line"><span class="number">2</span>、copy是对当前对象进行了一次拷贝，重新拷贝了当前对象，当使用的时候减少了对当前对象的依赖。</div></pre></td></tr></table></figure>
+        <h1 id="涂鸦功能需求分析"><a href="#涂鸦功能需求分析" class="headerlink" title="涂鸦功能需求分析"></a>涂鸦功能需求分析</h1><ul>
+<li><p>在短视频进入编辑界面的时候在视频预览播放层上用户点击涂鸦按钮调出涂鸦面板。</p>
+</li>
+<li><p>在涂鸦面板为第一次响应的时候，编辑界面面板不响应。</p>
+</li>
+<li><p>涂鸦过程中可以选择画笔颜色，同时可以调节画笔宽度。</p>
+</li>
+<li><p>用户可以撤销涂鸦，进行清屏操作。</p>
+</li>
+</ul>
+<h1 id="技术背景"><a href="#技术背景" class="headerlink" title="技术背景"></a>技术背景</h1><ul>
+<li>涂鸦功能涉及到iOS开发Cocoa框架中绘图操作。</li>
+</ul>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><h2 id="一、UIBezierPath-绘制画板方法"><a href="#一、UIBezierPath-绘制画板方法" class="headerlink" title="一、UIBezierPath 绘制画板方法"></a>一、UIBezierPath 绘制画板方法</h2><h3 id="UIBerierPath的原理"><a href="#UIBerierPath的原理" class="headerlink" title="UIBerierPath的原理"></a>UIBerierPath的原理</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>、 UIBezierPath使用UIBezierPath可以创建基于矢量的路径，此类是Core Graphics框架关于路径的封装。使用此类可以定义简单的形状，如椭圆、矩形或者有多个直线和曲线段组成的形状等。</div><div class="line"></div><div class="line"><span class="number">2</span>、UIBezierPath是CGPathRef数据类型的封装。如果是基于矢量形状的路径，都用直线和曲线去创建。我们使用直线段去创建矩形和多边形，使用曲线去创建圆弧（arc）、圆或者其他复杂的曲线形状。</div><div class="line"></div><div class="line"><span class="number">3</span>、使用UIBezierPath画图步骤：</div><div class="line"></div><div class="line">创建一个UIBezierPath对象</div><div class="line"></div><div class="line">调用-<span class="symbol">moveToPoint:</span>设置初始线段的起点</div><div class="line"></div><div class="line">添加线或者曲线去定义一个或者多个子路径</div><div class="line"></div><div class="line">改变UIBezierPath对象跟绘图相关的属性。如，我们可以设置画笔的属性、填充样式等。</div></pre></td></tr></table></figure>
+<h3 id="实现细节"><a href="#实现细节" class="headerlink" title="实现细节"></a>实现细节</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">创建一继承自UIBerierPath的子类，在子类中用两个属性分别记录画笔的颜色和是否为清除涂鸦路径操作。</div><div class="line"></div><div class="line">   @property (nonatomic,copy) UIColor *lineColor; <span class="regexp">//</span> 画笔的颜色</div><div class="line">   @property (nonatomic,assign) BOOL isCleanScreen; <span class="regexp">//</span> 是否撤销</div></pre></td></tr></table></figure>
+<p>需要实现的API</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- (void)<span class="symbol">touchesBegan:</span>(NSSet *)touches <span class="symbol">withEvent:</span>(UIEvent *)event;</div><div class="line">- (void)<span class="symbol">touchesMoved:</span>(NSSet&lt;UITouch *&gt; *)touches <span class="symbol">withEvent:</span>(UIEvent *)event;</div><div class="line">- (void)<span class="symbol">touchesEnded:</span>(NSSet&lt;UITouch *&gt; *)touches <span class="symbol">withEvent:</span>(UIEvent *)event;</div></pre></td></tr></table></figure>
+<p>最核心的API： <code>**drawRect**</code>方法的重写</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (void)<span class="symbol">drawRect:</span>(CGRect)rect &#123;</div><div class="line">  /<span class="regexp">/ 设置画笔颜色</span></div><div class="line"><span class="regexp">  /</span><span class="regexp">/ 设置画线模式</span></div><div class="line"><span class="regexp">  </span></div><div class="line"><span class="regexp">  [path stroke];</span></div><div class="line"><span class="regexp">&#125;</span></div></pre></td></tr></table></figure>
+<h2 id="二、还有两种涂鸦实现方法："><a href="#二、还有两种涂鸦实现方法：" class="headerlink" title="二、还有两种涂鸦实现方法："></a>二、还有两种涂鸦实现方法：</h2><h3 id="1、系统绘图库-NSUndoManager-Quartz2D实现。"><a href="#1、系统绘图库-NSUndoManager-Quartz2D实现。" class="headerlink" title="1、系统绘图库 NSUndoManager + Quartz2D实现。"></a>1、系统绘图库 NSUndoManager + Quartz2D实现。</h3><h3 id="2、使用OpenGLES实现。"><a href="#2、使用OpenGLES实现。" class="headerlink" title="2、使用OpenGLES实现。"></a>2、使用OpenGLES实现。</h3><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li><p>对于简单一次性绘制涂鸦需求，可以采用第一种方案，方案一API具有高度封装性使用成本比较低，如果不会重复绘制，不会有很大的性能问题产生。</p>
+</li>
+<li><p>如果追求很流畅的绘制效率，采用第二种方案。方案二绘制效率高，偏底层，绘制速度快，但因为偏于底层，对于重复绘制会比较耗性能，计算频繁会出现延迟断点问题。</p>
+</li>
+<li><p>方案三更偏底层，很多需求需要用OpenGL自定义开发，成本高，出现问题不容易解决，优点是绘制速度更快，更流畅。</p>
+</li>
+</ul>
 
       
     </div>
@@ -392,14 +383,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/mutableCopy/" rel="tag"># mutableCopy</a>
-          
-            <a href="/tags/copy/" rel="tag"># copy</a>
-          
-        </div>
-      
 
       
       
@@ -409,8 +392,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/14/图片的压缩方式/" rel="next" title="图片的压缩方式">
-                <i class="fa fa-chevron-left"></i> 图片的压缩方式
+              <a href="/2016/04/20/ios深浅拷贝/" rel="next" title="ios深浅拷贝">
+                <i class="fa fa-chevron-left"></i> ios深浅拷贝
               </a>
             
           </div>
@@ -419,7 +402,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/11/09/涂鸦功能需求分析/" rel="prev" title="">
+              <a href="/2017/11/09/视频添加文字和贴纸需求分析/" rel="prev" title="">
                  <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -580,7 +563,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#浅拷贝"><span class="nav-number">2.</span> <span class="nav-text">浅拷贝</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#深拷贝"><span class="nav-number">3.</span> <span class="nav-text">深拷贝</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#retain和copy的区别："><span class="nav-number">5.</span> <span class="nav-text">retain和copy的区别：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#涂鸦功能需求分析"><span class="nav-number">1.</span> <span class="nav-text">涂鸦功能需求分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#技术背景"><span class="nav-number">2.</span> <span class="nav-text">技术背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方案"><span class="nav-number">3.</span> <span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、UIBezierPath-绘制画板方法"><span class="nav-number">3.1.</span> <span class="nav-text">一、UIBezierPath 绘制画板方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UIBerierPath的原理"><span class="nav-number">3.1.1.</span> <span class="nav-text">UIBerierPath的原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现细节"><span class="nav-number">3.1.2.</span> <span class="nav-text">实现细节</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、还有两种涂鸦实现方法："><span class="nav-number">3.2.</span> <span class="nav-text">二、还有两种涂鸦实现方法：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、系统绘图库-NSUndoManager-Quartz2D实现。"><span class="nav-number">3.2.1.</span> <span class="nav-text">1、系统绘图库 NSUndoManager + Quartz2D实现。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、使用OpenGLES实现。"><span class="nav-number">3.2.2.</span> <span class="nav-text">2、使用OpenGLES实现。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
